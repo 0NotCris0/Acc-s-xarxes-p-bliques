@@ -87,3 +87,5 @@ Al final de l’activitat s’haurà aconseguit:
 - Comprendre el funcionament bàsic de les regles DNAT i les VPN.
 
 ---
+
+- [Guia detallada de la pràctica](guia.md)

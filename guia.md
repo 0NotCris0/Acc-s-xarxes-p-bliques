@@ -4,7 +4,7 @@
 
 Farem servir tres màquines virtuals: dos Zorin OS i un IPFire. El primer Zorin OS serà el client, el segon serà el servidor i l'IPFire serà el router que connectarà les dues màquines a Internet. 
 
-Un zorin tindra xarxa interna i l'altre xarxa NAT, el ipFire tindra una interficie de xarxa interna i una altra de xarxa NAT.
+Un Zorin tindrà xarxa interna i l'altre xarxa NAT, l'IPFire tindrà una interfície de xarxa interna i una altra de xarxa NAT.
 
 <img src="img/6.png" width="600" />
 
@@ -12,11 +12,11 @@ Un zorin tindra xarxa interna i l'altre xarxa NAT, el ipFire tindra una interfic
 
 <img src="img/8.png" width="600" />
 
-Despres haurem de instalar els serveis de ssh i apache2 al servidor.
+Després haurem de instal·lar els serveis de ssh i apache2 al servidor.
 
 <img src="img/2.png" width="600" />
 
-Comprovem que el serveis estan funcionant correctament:
+Comprovem que els serveis estan funcionant correctament:
 
 <img src="img/3.png" width="600" />
 
@@ -36,7 +36,7 @@ A la interfície web d'IPFire, s'obre Cortafuegos → Reglas → Nueva regla i s
 
 <img src="img/10.png" width="600" />
 
-Un cop afegida i aplicada, la regla apareix a la llista del cortafocs. Des d'una màquina externa, s'obre el navegador apuntant a la IP pública del firewall (http://10.0.2.13) i la pàgina del servidor es carrega sense problemes.
+Un cop afegida i aplicada, la regla apareix a la llista del cortafoc. Des d'una màquina externa, s'obre el navegador apuntant a la IP pública del firewall (http://10.0.2.13) i la pàgina del servidor es carrega sense problemes.
 
 <img src="img/11.png" width="600" />
 
@@ -48,7 +48,7 @@ El procediment és el mateix que per al web, amb una particularitat: en lloc d'e
 
 <img src="img/13.png" width="600" />
 
-I agraguem la regla al firewall.
+I afegim la regla al firewall.
 
 <img src="img/14.png" width="600" />
 
@@ -72,7 +72,7 @@ OpenVPN requereix tres tipus de certificats per funcionar de manera segura: Root
 
 Des de la consola d'IPFire, s'accedeix a Servicios → OpenVPN → Generar certificados root/host.
 
-Posem nombre de organitzacio i host. I posem pais Spain. 
+Posem nom d'organització i host. I posem país Spain.
 
 <img src="img/17.png" width="600" />
 
@@ -100,20 +100,20 @@ A la secció de connexions d'OpenVPN, es prem Agregar i es tria el tipus Host-to
 
 <img src="img/22.png" width="600" />
 
-Posarem el nom de la conexió que serà notcris.
+Posarem el nom de la connexió que serà notcris.
 
 <img src="img/23.png" width="600" />
 
-Posarme aquest seguetns paràmetres:
+Posem aquests paràmetres:
 
 - Nombre: client
-- nom d'organitzacio: notcris
-- pais: spain 
+- nom d'organització: notcris
+- país: Spain
 - contrasenya: 12345678
 
 <img src="img/24.png" width="600" />
 
-Haurem de activar la opcio de Redirect Gateway per a que tot el tràfic del client passi per la VPN.
+Haurem d'activar l'opció de Redirect Gateway perquè tot el tràfic del client passi per la VPN.
 
 <img src="img/35.png" width="600" />
 
@@ -125,7 +125,7 @@ Un cop guardada la configuració, es descarrega el fitxer de configuració del c
 
 ## Configuració del client Windows
 
-Es molt impportant que en el client windows editem el arxiu de hosts i afegim la IP del servidor amb el nom de domini que hem posat a la configuració de OpenVPN. En aquest cas, afegirem la línia:
+És molt important que en el client Windows editem l'arxiu de hosts i afegim la IP del servidor amb el nom de domini que hem posat a la configuració d'OpenVPN. En aquest cas, afegirem la línia:
 
 ```bash
 10.0.2.13 ipfire.notcris
@@ -139,23 +139,23 @@ A continuació, es descarrega i s'instal·la el client OpenVPN per a Windows. Un
 
 <img src="img/30.png" width="600" />
 
-Despres entrarem en la aplicacio de OpenVPN i importarem el fitxer de configuració del client.
+Després entrarem en l'aplicació d'OpenVPN i importarem el fitxer de configuració del client.
 
 <img src="img/31.png" width="600" />
 
-Despres haurem de copiar el fixer i mourles a la carpeta de configuració del client d'OpenVPN, que normalment es troba a C:\Program Files\OpenVPN\config.
+Després haurem de copiar els fitxers i moure'ls a la carpeta de configuració del client d'OpenVPN, que normalment es troba a C:\Program Files\OpenVPN\config.
 
 <img src="img/32.png" width="600" />
 
-Haurem de posar la contrasenya que hem posat a la configuració del client d'OpenVPN.
+Haurem de posar la contrasenya que hem fixat a la configuració del client d'OpenVPN.
 
 <img src="img/33.png" width="600" />
 
-Aqui podem veure que la connexió s'ha establert correctament i que el client ha rebut una IP de la subxarxa VPN (10.157.253.2).
+Aquí podem veure que la connexió s'ha establert correctament i que el client ha rebut una IP de la subxarxa VPN (10.157.253.2).
 
 <img src="img/36.png" width="600" />
 
-Podem veure en el panel que el client està connectat i que la connexió està activa.
+Podem veure en el panell que el client està connectat i que la connexió està activa.
 
 <img src="img/37.png" width="600" />
 
