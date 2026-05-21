@@ -58,57 +58,132 @@ Quan un client extern es connecta al port 2222 del firewall, IPFire redirigeix l
 ssh -p 2222 usuari@10.0.2.13
 ```
 
+<img src="img/15.png" width="600" />
+
 ## Configuració de la VPN amb OpenVPN
 
-<img src="img/15.png" width="600" />
+El DNAT permet exposar serveis individuals, però no ofereix accés general a la xarxa interna. Per aconseguir-ho, s'utilitza una VPN. IPFire inclou OpenVPN integrat, la qual cosa simplifica el desplegament.
+
+OpenVPN requereix tres tipus de certificats per funcionar de manera segura: Root CA: l'autoritat de certificació arrel, que signa la resta. Certificat de host: identifica el propi servidor IPFire. Certificat de client: un per cada usuari que es connecti a la VPN.
+
+<img src="img/34.png" width="600" />
 
 <img src="img/16.png" width="600" />
 
+Des de la consola d'IPFire, s'accedeix a Servicios → OpenVPN → Generar certificados root/host.
+
+Posem nombre de organitzacio i host. I posem pais Spain. 
+
 <img src="img/17.png" width="600" />
+
+La generació de les claus triga uns instants. En acabar, apareixen a la llista de certificats: Root CA, certificat de host i la clau TLS estàtica de 2048 bits.
 
 <img src="img/18.png" width="600" />
 
+Un cop disposem dels certificats, es defineixen els paràmetres del servei OpenVPN:
+
+- PORT: 1194 (UDP)
+- Protocol: UDP
+- algoritme de xifrat: SHA256
+- dns: 192.168.4.254
+- domain: notcris
+
 <img src="img/19.png" width="600" />
 
+I guardem la configuració. 
+
 <img src="img/20.png" width="600" />
+
+A la secció de connexions d'OpenVPN, es prem Agregar i es tria el tipus Host-to-Net (Roadwarrior), que és el model adequat quan un usuari es connecta des d'un lloc remot.
 
 <img src="img/21.png" width="600" />
 
 <img src="img/22.png" width="600" />
 
+Posarem el nom de la conexió que serà notcris.
+
 <img src="img/23.png" width="600" />
+
+Posarme aquest seguetns paràmetres:
+
+- Nombre: client
+- nom d'organitzacio: notcris
+- pais: spain 
+- contrasenya: 12345678
 
 <img src="img/24.png" width="600" />
 
-<img src="img/25.png" width="600" />
+Haurem de activar la opcio de Redirect Gateway per a que tot el tràfic del client passi per la VPN.
+
+<img src="img/35.png" width="600" />
+
+Un cop guardada la configuració, es descarrega el fitxer de configuració del client, que inclou els certificats i les claus necessàries per a establir la connexió VPN.
 
 <img src="img/26.png" width="600" />
 
 <img src="img/27.png" width="600" />
 
+## Configuració del client Windows
+
+Es molt impportant que en el client windows editem el arxiu de hosts i afegim la IP del servidor amb el nom de domini que hem posat a la configuració de OpenVPN. En aquest cas, afegirem la línia:
+
+```bash
+10.0.2.13 ipfire.notcris
+```
+
 <img src="img/28.png" width="600" />
+
+A continuació, es descarrega i s'instal·la el client OpenVPN per a Windows. Un cop instal·lat, es copia el fitxer de configuració del client (notcris.ovpn) i el fitxer de .p12. 
 
 <img src="img/29.png" width="600" />
 
 <img src="img/30.png" width="600" />
 
+Despres entrarem en la aplicacio de OpenVPN i importarem el fitxer de configuració del client.
+
 <img src="img/31.png" width="600" />
+
+Despres haurem de copiar el fixer i mourles a la carpeta de configuració del client d'OpenVPN, que normalment es troba a C:\Program Files\OpenVPN\config.
 
 <img src="img/32.png" width="600" />
 
+Haurem de posar la contrasenya que hem posat a la configuració del client d'OpenVPN.
+
 <img src="img/33.png" width="600" />
 
-<img src="img/34.png" width="600" />
-
-<img src="img/35.png" width="600" />
+Aqui podem veure que la connexió s'ha establert correctament i que el client ha rebut una IP de la subxarxa VPN (10.157.253.2).
 
 <img src="img/36.png" width="600" />
 
+Podem veure en el panel que el client està connectat i que la connexió està activa.
 
 <img src="img/37.png" width="600" />
 
+## Comprovacions finals
+
+La prova definitiva consisteix a accedir als serveis del servidor intern usant directament la seva IP privada, sense dependre del DNAT. Amb la VPN activa, s'obre el navegador i s'accedeix. 
+
+Podrem veure que pot fer ssh al servidor Zorin usant la IP privada, sense necessitat de passar pel port forwarding del firewall.
+
 <img src="img/38.png" width="600" />
 
+La pàgina del servidor web es carrega correctament. El client Windows opera com si estigués físicament dins de la xarxa 192.168.5.0/24.
+
 <img src="img/39.png" width="600" />
+
+DNAT: obre un únic port cap a un servei específic. Útil per exposar serveis concrets de manera controlada. 
+
+VPN: proporciona accés complet a tota la xarxa interna, amb tot el tràfic xifrat de cap a cap. Ideal per a treballadors remots o administradors de sistemes.
+
+
+
+
+
+
+
+
+
+
+
 
 
