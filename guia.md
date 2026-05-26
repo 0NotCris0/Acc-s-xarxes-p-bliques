@@ -178,22 +178,45 @@ VPN: proporciona accés complet a tota la xarxa interna, amb tot el tràfic xifr
 
 # Activitat extra
 
+## Configura el servidor amb els paràmetres bàsics i genera l'arxiu que servirà per configurar el client
+
+Anirem a serveis i després a WireGuard. Activarem el servei.
+
 <img src="img/40.png" width="600" />
+
+Posarem Red privada virtual i agregarem la configuració.
 
 <img src="img/41.png" width="600" />
 
+Després posarem com a nom usuari i com subxarxes permeses posarem totes 0.0.0.0/0.
+
 <img src="img/42.png" width="600" />
+
+Aquí haurem de descarregar l'arxiu de configuració del client, que inclou les claus i els paràmetres necessaris per a establir la connexió VPN.
 
 <img src="img/43.png" width="600" />
 
+## Si uses un client Linux, no cal instal·lar cap eina, perquè les darreres versions ja tenen WireGuard incorporat al Kernel i per tant, es pot configurar directament des del Network Manager. Si uses Windows 11 sí que necessitaràs el client.
+
+Descarreguem a la web oficial de WireGuard el client per a Windows i l'instal·lem.
+
 <img src="img/44.png" width="600" />
+
+## Exporta l'arxiu de configuració cap la màquina que farà de client extern, de forma similar a com ho has fet amb OpenVPN.
+
+En la terminal del client Windows, copiem el fitxer de configuració del client de WireGuard.
 
 <img src="img/45.png" width="600" />
 
+Aquí veiem que ja tenim tot instal·lat, haurem de importar l'arxiu pel túnel.
+
 <img src="img/46.png" width="600" />
 
-<img src="img/47.png" width="600" />
+## Comprova la connexió.
 
+Veurem que ja ho tenim activat. I tota la informació. 
+
+<img src="img/47.png" width="600" />
 
 <img src="img/48.png" width="600" />
 
