@@ -176,7 +176,28 @@ DNAT: obre un únic port cap a un servei específic. Útil per exposar serveis c
 VPN: proporciona accés complet a tota la xarxa interna, amb tot el tràfic xifrat de cap a cap. Ideal per a treballadors remots o administradors de sistemes.
 
 
+# Activitat extra
 
+<img src="img/40.png" width="600" />
+
+<img src="img/41.png" width="600" />
+
+<img src="img/42.png" width="600" />
+
+<img src="img/43.png" width="600" />
+
+<img src="img/44.png" width="600" />
+
+<img src="img/45.png" width="600" />
+
+<img src="img/46.png" width="600" />
+
+<img src="img/47.png" width="600" />
+
+
+<img src="img/48.png" width="600" />
+
+<img src="img/49.png" width="600" />
 
 
 

@@ -68,6 +68,20 @@ Finalment:
 
 ---
 
+## Activitat extra
+
+- Configura el servidor amb els paràmetres bàsics.
+- Genera l’arxiu de configuració del client.
+- En Linux:
+   - WireGuard ja ve integrat al *kernel*.
+   - Es pot configurar des del *Network Manager*.
+- En Windows 11:
+   - Cal instal·lar el client de WireGuard.
+- Exporta l’arxiu de configuració al client extern.
+- Comprova que la connexió VPN funciona correctament.
+
+--- 
+
 ## Criteris de qualificació
 
 La pràctica es valorarà segons:
